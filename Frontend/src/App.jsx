@@ -5,7 +5,9 @@ import Home from './Pages/Home/Home.jsx';
 import Sidebar from './Components/SideBar/Sidebar.jsx';
 import Doctordash from './Pages/DoctorDash/Doctordash.jsx';
 import Parentdash from './Pages/ParentDash/Parentdash.jsx';
-import ColorGuessingGame from './Games/Colorguessing.jsx';
+import Parentlogin from './Pages/Parentlogin/Parentlogin.jsx';
+
+
 function App() {
 
   return (
@@ -15,9 +17,11 @@ function App() {
       <Routes>
        
         <Route path='/' element={<Home/>}/>
+       <Route path='/login' element={<Parentlogin/>}/>
+        {/* <Route path='/doctorlogin' element={<DoctorLogin/>}/> */}
         <Route path='/docdash' element={<Doctordash/>}/>
         <Route path='/parentdash' element={<Parentdash/>}/>
-        <Route path='/color' element={<ColorGuessingGame/>}/>
+        {/* <Route path='/color' element={<ColorGuessingGame/>}/> */}
       </Routes>
       </BrowserRouter>
     </>

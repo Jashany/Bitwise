@@ -1,0 +1,63 @@
+
+
+  .container{
+	display: flex;
+  }
+
+  .image{
+	height: 100vh;
+	flex: 1;
+	display: flex;
+	justify-content: center;
+ 	align-items: center;
+	background-color: #8855f4;
+  }
+
+  .innerform{
+	width: 60%;
+	height: 70%;
+	margin: auto ;
+  }
+  .loginform{
+
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+  }
+
+  .innerform h6{
+	font-size: 1rem;
+  }
+
+  .innerform p{
+	margin-bottom: 0 !important;
+  }
+
+  .loginform p{
+	color: #696f79 ;
+	margin-bottom: 2rem;
+  }
+  .formm{
+	display: flex;
+	flex-direction: column;
+  }
+
+  .formm input{
+	padding: 0.75rem 3.5rem;
+	margin-bottom: 2rem;
+  }
+
+  .formm button{
+	margin-top:1rem ;
+	background-color: #2C73EB;
+	border:  none ;
+	padding: 1rem 1rem;
+	color: white;
+	border-radius: 10px;
+	/* width: 90%; */
+	
+  }
+
+  @media only screen and (max-width: 600px) {
+
+}
