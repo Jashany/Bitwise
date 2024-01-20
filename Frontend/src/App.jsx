@@ -4,10 +4,10 @@ import './App.css'
 import Home from './Pages/Home/Home.jsx';
 import Sidebar from './Components/SideBar/Sidebar.jsx';
 import Doctordash from './Pages/DoctorDash/Doctordash.jsx';
+import Doctorlogin from './Pages/DoctorLogin/Doctorlogin.jsx';
 import Parentdash from './Pages/ParentDash/Parentdash.jsx';
 import Parentlogin from './Pages/Parentlogin/Parentlogin.jsx';
 import Community from './Components/community/Communitypage/Community.jsx';
-
 
 function App() {
 
@@ -19,7 +19,7 @@ function App() {
        
         <Route path='/' element={<Home/>}/>
        <Route path='/login' element={<Parentlogin/>}/>
-        {/* <Route path='/doctorlogin' element={<DoctorLogin/>}/> */}
+        <Route path='/doctorlogin' element={<Doctorlogin/>}/>
         <Route path='/docdash' element={<Doctordash/>}/>
         <Route path='/parentdash' element={<Parentdash/>}/>
         <Route path='/community' element={<Community/>}/>

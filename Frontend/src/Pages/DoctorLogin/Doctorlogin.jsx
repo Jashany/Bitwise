@@ -1,8 +1,8 @@
 import React,{ Fragment } from "react";
-import styles from "./Parentlogin.module.css";
+import styles from "./doctorlogin.module.css";
 import treadmill from '../../assets/treadmill.png';
 
-const Parentlogin = () => {
+const Doctorlogin = () => {
     return ( 
         <Fragment>
             <div className={styles.container}>  
@@ -29,4 +29,4 @@ const Parentlogin = () => {
      );
 }
  
-export default Parentlogin;
+export default Doctorlogin;
