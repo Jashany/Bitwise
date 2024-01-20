@@ -1,0 +1,54 @@
+
+.navbar{
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar div:nth-child(2){
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+    margin-right:2rem ;
+}
+
+.navbar div:nth-child(1){
+    display: flex;
+    align-items: center;
+}
+.navbar div:nth-child(1) img{
+   height: 5rem;
+}
+
+.main{
+    height: 90vh;
+    display: flex;
+}
+
+.main div{
+    width: 50%;
+    
+}
+
+.homeimg img{
+    height: 90%;
+}
+
+.content p{
+ font-family: 'Poppins';
+ font-size: 5.3125rem;
+ font-style: normal;
+ font-weight: 500;
+ line-height: 1.1;
+ 
+}
+.content button{
+    background: #8855F4;
+    border-radius: 3.4375rem;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    margin-inline: 2rem;
+    padding: 1rem 1.75rem;
+}
