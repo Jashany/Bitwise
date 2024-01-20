@@ -1,6 +1,8 @@
 import { Fragment } from "react";
+import {Router, Route } from 'react-router-dom';
 import Sidebar from "../../Components/SideBar/Sidebar.jsx";
 import styles from './Doctordash.module.css';
+import Community from "../../Components/community/Communitypage/Community.jsx";
 const Doctordash = () => {
     const doctor = [
         {
@@ -30,7 +32,10 @@ const Doctordash = () => {
       ]
     return ( 
         <Fragment>
+          <Router>
             <Sidebar props={doctor} />
+            <Route path="/doctordash/community" component={Community} />
+          </Router>
         </Fragment>
      );
 }

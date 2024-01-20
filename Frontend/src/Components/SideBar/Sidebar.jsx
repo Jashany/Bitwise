@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import styles from './Sidebar.module.css';
 
 
-const Sidebar = ({props}) => {
+const Sidebar = ({ props, onClick }) => {
     return ( 
         <Fragment>
             <div className={styles.main}>
@@ -13,7 +13,7 @@ const Sidebar = ({props}) => {
             <div className={styles.items}>
                {props.map((item,index)=>{
                      return(
-                          <div key={index} className={styles.item}>
+                          <div key={index} className={styles.item} onClick={() => onClick(item.title)}>
                             <img src={item.icon}/>
                             <h4>{item.title}</h4>
                           </div>

@@ -2,21 +2,21 @@ import express from 'express';
 import { Parent } from './models/parent.model.js';
 import { Doctor } from './models/doctor.model.js';
 import { Post } from './models/post.model.js';
+import { Appointment } from './models/appointment.model.js';
 import session from 'express-session';
 
 
 const app = express();
 app.use(express.json());
-
 app.use(session({
-  secret: 'Jas han',
+  secret: 'Jashan',
   resave: false,
   saveUninitialized: true,
   cookie: { secure: false } // set to true if your using https
 }));
 
 // Parent signup
-app.post("/signup/parent", async (req, res) => {
+app.post("/api/signup/parent", async (req, res) => {
     const { username, password } = req.body;
 
     try {
@@ -29,8 +29,17 @@ app.post("/signup/parent", async (req, res) => {
     }
 });
 
+app.get('/api/getAppointments', async (req, res) => {
+    try {
+        const appointments = await Appointment.find({});
+        res.json(appointments);
+    } catch (error) {
+        console.error('Error during appointments retrieval:', error);
+        res.status(500).send("Error retrieving appointments");
+    }
+});
 // Doctor signup
-app.post("/signup/doctor", async (req, res) => {
+app.post("/api/signup/doctor", async (req, res) => {
     const { name, email, password, qualification } = req.body;
 
     try {
@@ -42,10 +51,22 @@ app.post("/signup/doctor", async (req, res) => {
         res.status(500).send("User creation failed");
     }
 });
+app.post('/api/bookAppointment', async (req, res) => {
+    const { appointment_date, other_details } = req.body;
+    const booked_by = req.session.user._id; // Corrected session property name
+    try {
+        const newAppointment = new Appointment({ appointment_date, other_details ,booked_by });
+        await newAppointment.save();
 
+        res.status(201).json(newAppointment);
+    } catch (error) {
+        console.error('Error during appointment creation:', error);
+        res.status(500).send("Error creating appointment");
+    }
+});
 // Add post
-app.post("/addPost", async (req, res) => {
-    const { title, content } = req.body;
+app.post("/api/addPost", async (req, res) => {
+    const {  content } = req.body;
     const owner = req.session.user._id; // Corrected session property name
 
     if (!owner) {
@@ -53,7 +74,7 @@ app.post("/addPost", async (req, res) => {
     }
 
     try {
-        const newPost = new Post({ title, content, owner });
+        const newPost = new Post({ content, owner });
         await newPost.save();
         res.status(201).json(newPost);
     } catch (error) {
@@ -62,8 +83,18 @@ app.post("/addPost", async (req, res) => {
     }
 });
 
+// Get all posts
+app.get("/api/getPosts", async (req, res) => {
+    try {
+        const posts = await Post.find({});
+        res.json(posts);
+    } catch (error) {
+        console.error('Error during posts retrieval:', error);
+        res.status(500).send("Error retrieving posts");
+    }
+});
 // Get post by ID
-app.get("/getPost/:id", async (req, res) => {
+app.get("/api/getPost/:id", async (req, res) => {
     try {
         const post = await Post.findById(req.params.id);
         if (!post) {
@@ -77,7 +108,7 @@ app.get("/getPost/:id", async (req, res) => {
 });
 
 // Parent login
-app.post("/login/parent", async (req, res) => {
+app.post("/api/login/parent", async (req, res) => {
     const { username, password } = req.body;
 
     try {
@@ -95,7 +126,7 @@ app.post("/login/parent", async (req, res) => {
     }
 });
 
-app.post("/addScore/:gameName", async (req, res) => {
+app.post("/api/addScore/:gameName", async (req, res) => {
     const { gameName } = req.params;
     const { score } = req.body;
 
@@ -127,7 +158,7 @@ app.post("/addScore/:gameName", async (req, res) => {
     }
 });
 
-app.get("/getScores/:gameName", async (req, res) => {
+app.get("/api/getScores/:gameName", async (req, res) => {
     const { gameName } = req.params;
 
     try {
@@ -155,7 +186,7 @@ app.get("/getScores/:gameName", async (req, res) => {
     }
 });
 
-app.get("/getAllGames", async (req, res) => {
+app.get("/api/getAllGames", async (req, res) => {
     try {
         const userId = req.session.user._id;
         if (!userId) {
@@ -173,6 +204,17 @@ app.get("/getAllGames", async (req, res) => {
         console.error('Error getting games:', error);
         res.status(500).send("Error getting games");
     }
+});
+
+app.get('/logout', (req, res) => {
+    req.session.destroy(err => {
+        if(err) {
+            return res.status(500).send('Could not log out.');
+        } else {
+            res.clearCookie('connect.sid');
+            return res.redirect('/');
+        }
+    });
 });
 
 export { app };

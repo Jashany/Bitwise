@@ -1,10 +1,14 @@
-import { Fragment } from "react";
+import { Fragment,useState } from "react";
 import Sidebar from "../../Components/SideBar/Sidebar.jsx";
+import { Route, Router } from "react-router-dom";
+import style from './Parentdash.module.css';
+import Community from "../../Components/community/Communitypage/Community.jsx";
 const Parentdash = () => {
+  const [activeComponent, setActiveComponent] = useState('Dashboard');
     const parent = [
         {
           title: 'Dashboard',
-          icon: ''
+          icon: '',
         },
         {
           title: 'Appointments',
@@ -12,7 +16,8 @@ const Parentdash = () => {
         },
         {
             title: 'Community',
-            icon: ''
+            icon: '',
+            component: <Community />
         },
         {
             title: 'Settings',
@@ -23,8 +28,17 @@ const Parentdash = () => {
             icon: ''
         }
       ]
+
+      const handleClick = (title) => {
+        setActiveComponent(title);
+    };
     return ( 
-            <Sidebar props={parent} />  
+      <Fragment>
+        <div className={style.main}>
+            <Sidebar props={parent} onClick={handleClick} />
+            {parent.find(item => item.title === activeComponent).component}
+            </div>
+      </Fragment> 
      );
 }
  

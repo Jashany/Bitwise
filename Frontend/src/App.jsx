@@ -6,13 +6,14 @@ import Sidebar from './Components/SideBar/Sidebar.jsx';
 import Doctordash from './Pages/DoctorDash/Doctordash.jsx';
 import Parentdash from './Pages/ParentDash/Parentdash.jsx';
 import Parentlogin from './Pages/Parentlogin/Parentlogin.jsx';
+import Community from './Components/community/Communitypage/Community.jsx';
 
 
 function App() {
 
   return (
     <>
-     <BrowserRouter>
+     
      {/* <Sidebar props={doctor} /> */}
       <Routes>
        
@@ -21,9 +22,9 @@ function App() {
         {/* <Route path='/doctorlogin' element={<DoctorLogin/>}/> */}
         <Route path='/docdash' element={<Doctordash/>}/>
         <Route path='/parentdash' element={<Parentdash/>}/>
+        <Route path='/community' element={<Community/>}/>
         {/* <Route path='/color' element={<ColorGuessingGame/>}/> */}
       </Routes>
-      </BrowserRouter>
     </>
   )
 }
