@@ -95,5 +95,84 @@ app.post("/login/parent", async (req, res) => {
     }
 });
 
+app.post("/addScore/:gameName", async (req, res) => {
+    const { gameName } = req.params;
+    const { score } = req.body;
+
+    try {
+        const userId = req.session.user._id;
+        if (!userId) {
+            return res.status(404).send("User not found");
+        }
+        const user = await Parent.findById(userId);
+
+        if (!user) {
+            return res.status(404).send("User not found");
+        }
+
+        const existingGame = user.games.find(game => game.gameName === gameName);
+
+        if (existingGame) {
+
+            existingGame.scores.push({ score, timestamp: new Date() });
+        } else {
+            user.games.push({ gameName, scores: [{ score, timestamp: new Date() }] });
+        }
+
+        await user.save();
+        res.status(201).json(user);
+    } catch (error) {
+        console.error('Error adding score:', error);
+        res.status(500).send("Error adding score");
+    }
+});
+
+app.get("/getScores/:gameName", async (req, res) => {
+    const { gameName } = req.params;
+
+    try {
+        const userId = req.session.user._id;
+        if (!userId) {
+            return res.status(404).send("User not found");
+        }
+        const user = await Parent.findById(userId);
+
+        if (!user) {
+            return res.status(404).send("User not found");
+        }
+
+
+        const game = user.games.find(game => game.gameName === gameName);
+
+        if (!game) {
+            return res.status(404).send("Game not found");
+        }
+
+        res.status(200).json(game.scores);
+    } catch (error) {
+        console.error('Error getting scores:', error);
+        res.status(500).send("Error getting scores");
+    }
+});
+
+app.get("/getAllGames", async (req, res) => {
+    try {
+        const userId = req.session.user._id;
+        if (!userId) {
+            return res.status(404).send("User not found");
+        }
+
+
+        const user = await Parent.findById(userId);
+
+        if (!user) {
+            return res.status(404).send("User not found");
+        }
+        res.status(200).json(user.games);
+    } catch (error) {
+        console.error('Error getting games:', error);
+        res.status(500).send("Error getting games");
+    }
+});
 
 export { app };
