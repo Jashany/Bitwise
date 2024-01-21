@@ -1,8 +1,19 @@
 .main{
-    width: 100%;
+    width: 60%;
+    margin: 0 auto ;
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
     /* align-items: center; */
+    overflow: hidden;
+}
+
+.main input{
+    padding: 1rem 5rem;
+}
+.main button{
+    padding:  1rem 2rem;
+/* border: none; */
 }

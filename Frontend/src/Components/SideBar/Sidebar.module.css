@@ -27,12 +27,12 @@
     margin-left: 2rem;
     gap: 1.35rem;
 }
-.item h4{
+.item a{
     font-family: 'Poppins';
     font-size: 1.75rem;
     font-weight: 500;
     color: rgba(255, 255, 255, 0.80);
-    
+    text-decoration: none;
     
 }
 

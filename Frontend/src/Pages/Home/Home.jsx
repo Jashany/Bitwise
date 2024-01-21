@@ -22,7 +22,7 @@ const Home = () => {
                 Unlock your mind's potential Where learning meets fun!
                 </p>
                 <button>Doctors</button>
-                <button>Parents</button>
+                <button><a href="/login">Parents</a></button>
                 </div>
                <div className={styles.homeimg}>
                 <img src={homeimg} alt=""  />

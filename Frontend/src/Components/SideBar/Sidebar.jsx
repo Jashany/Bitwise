@@ -1,7 +1,6 @@
 import { Fragment } from "react";
 import styles from './Sidebar.module.css';
 
-
 const Sidebar = ({ props, onClick }) => {
     return ( 
         <Fragment>
@@ -15,11 +14,14 @@ const Sidebar = ({ props, onClick }) => {
                      return(
                           <div key={index} className={styles.item} onClick={() => onClick(item.title)}>
                             <img src={item.icon}/>
-                            <h4>{item.title}</h4>
+                            <a>{item.title}</a>
                           </div>
                      )  
                }
                 )}
+                <div className={styles.item} style={{marginTop:"20px"}}>
+                            <a href='/'>Logout</a>
+                </div>
             </div>
             <div className={styles.line}>
             </div>  

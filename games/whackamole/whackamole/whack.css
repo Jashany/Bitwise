@@ -1,0 +1,55 @@
+
+
+.square {
+    width: 150px;
+    height: 150px;
+    border:solid rgb(175, 107, 107);
+
+}
+
+.grid {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;
+    width: 468px;
+    height: 468px;
+}
+
+#\31  {
+    border-radius: 10px 0px 0px 0px;
+}
+
+#\33 {
+    border-radius: 0px 10px 0px 0px;
+}
+
+#\37 {
+    border-radius: 0px 0px 0px 10px;
+}
+
+#\39 {
+    border-radius: 0px 0px 10px 0px;
+}
+
+.mole {
+    background-image: url(mole.png);
+    background-size: cover;
+    cursor: pointer;
+}
+
+#modal-title-id {
+    margin-left: 32%;
+}
+
+.modalMod {
+    height: 250px;
+}
+
+.none {
+    pointer-events: none;
+}
+
+
+
+

@@ -8,7 +8,7 @@ const Parentdash = () => {
     const parent = [
         {
           title: 'Dashboard',
-          icon: '',
+          icon: ''
         },
         {
           title: 'Appointments',
@@ -21,10 +21,6 @@ const Parentdash = () => {
         },
         {
             title: 'Settings',
-            icon: ''
-        },
-        {
-            title: 'Logout',
             icon: ''
         }
       ]

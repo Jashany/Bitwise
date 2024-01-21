@@ -26,9 +26,14 @@
     display: flex;
 }
 
-.main div{
+.content{
     width: 50%;
-    
+    padding-top: 7rem;
+    padding-left: 3rem;
+}
+
+.homeimg{
+    width: 50%;
 }
 
 .homeimg img{
@@ -51,4 +56,9 @@
     font-size: 1.5rem;
     margin-inline: 2rem;
     padding: 1rem 1.75rem;
+}
+
+.content a{
+    text-decoration: none;
+    color:white;
 }
